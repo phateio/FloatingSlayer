@@ -1,0 +1,2 @@
+# FloatingSlayer
+A Spigot plugin.
