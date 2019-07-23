@@ -1,0 +1,8 @@
+main: github.phateio.floatingslayer.FloatingSlayer
+name: FloatingSlayer
+version: '1.0'
+description: A Spigot plugin
+load: POSTWORLD
+author: shikendon
+website: https://github.com/phateio/FloatingSlayer
+api-version: 1.14
