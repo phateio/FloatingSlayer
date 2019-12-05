@@ -22,16 +22,21 @@ public class FloatingSlayer extends JavaPlugin {
 				String playerName = player.getName();
 				String reason = event.getReason();
 
-				if (!reason.equalsIgnoreCase("Flying is not enabled on this server")) {
-					return;
+				if (reason.equalsIgnoreCase("Flying is not enabled on this server")) {
+					event.setCancelled​(true);
+
+					player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 5));
+					plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+						player.kickPlayer("You are kicked for floating too long!");
+					}, 20L);
+				} else if (reason.equalsIgnoreCase("cheating")) {
+					event.setCancelled​(true);
+
+					player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 5));
+					plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+						player.kickPlayer("You are kicked for cheating!");
+					}, 20L);
 				}
-
-				event.setCancelled​(true);
-
-				player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 5));
-				plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-					player.kickPlayer("You are kicked for floating too long!");
-				}, 20L);
 			}
 		}, this);
 	}
